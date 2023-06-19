@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+  <!-- Add your site or application content here -->
+  <p>Hello world!</p>
+
+  <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+
+  <script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.js"></script>
+
+  <script>
+    $(function () {
+      $('#permissions').DataTable({
+        ajax: {
+          method: 'GET',
+          url: 'https://reports.jenkins.io/github-jenkinsci-permissions-report.json',
+          dataSrc: '',
+          dataType: 'json',
+        },
+        columns: [
+          {
+            title: "Repository",
+            render: function (data, type, row, metadata) {
+              return '<a href="https://github.com/jenkinsci/' + data + '" target="_blank" rel="noreferrer noopener">' + data + '</a>';
+            }
+          },
+          {
+            title: "User",
+            render: function (data, type, row, metadata) {
+              return '<a href="https://github.com/' + data + '" target="_blank" rel="noreferrer noopener">' + data + '</a>';
+            }
+          },
+          {
+            title: "Access"
+          }
+        ]
+      });
+    });
+  </script>
+
+  <table id="permissions" class="display" style="width:100%">
+    <thead>
+    <tr>
+      <th>Repository</th>
+      <th>User</th>
+      <th>Access</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+      <th>Repository</th>
+      <th>User</th>
+      <th>Access</th>
+    </tr>
+    </tfoot>
+  </table>
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
+    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
+  </script>
+  <script src="https://www.google-analytics.com/analytics.js" async></script>
+</body>
+
+</html>
