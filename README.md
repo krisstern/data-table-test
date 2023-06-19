@@ -1,5 +1,8 @@
 # Testing data table README
 
+## Objective
+To generate data table using https://datatables.net/.
+
 ## To start
 Open Chrome with the command:
 
